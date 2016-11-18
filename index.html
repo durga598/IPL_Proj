@@ -20,6 +20,10 @@
         #content_1 {
             display: none;
         }
+        .modalDiv{
+        width: 238px;
+        height: 326px;
+        }
     </style>
 </head>
 
@@ -181,37 +185,38 @@
             <div style="position:absolute;display:block;background:url('data/img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
         </div>
         <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;">
+          <div data-p="144.50" style="display: none;">
+              <img data-u="image" src="data/team_logo/GL.jpg" class="dButton" onclick="func('GujaratLions')"/>
+              <img data-u="thumb" src="data/team_logo/GL.jpg" />
+          </div>
             <div data-p="144.50">
-                <img data-u="image" src="data/team_logo/DD.jpg" id="dButton" />
+                <img data-u="image" src="data/team_logo/DD.jpg" class="dButton" onclick="func('DelhiDareDevils')"/>
                 <img data-u="thumb" src="data/team_logo/DD.jpg" />
             </div>
+
             <div data-p="144.50" style="display: none;">
-                <img data-u="image" src="data/team_logo/GL.jpg" />
-                <img data-u="thumb" src="data/team_logo/GL.jpg" />
-            </div>
-            <div data-p="144.50" style="display: none;">
-                <img data-u="image" src="data/team_logo/KKR.jpg" />
+                <img data-u="image" src="data/team_logo/KKR.jpg" class="dButton" onclick="func('KingsXIPunjab')"/>
                 <img data-u="thumb" src="data/team_logo/KKR.jpg" />
             </div>
             <div data-p="144.50" style="display: none;">
-                <img data-u="image" src="data/team_logo/KXIP.jpg" />
+                <img data-u="image" src="data/team_logo/KXIP.jpg" class="dButton" onclick="func('KolkataKnightRiders')"/>
                 <img data-u="thumb" src="data/team_logo/KXIP.jpg" />
             </div>
             <div data-p="144.50" style="display: none;">
-                <img data-u="image" src="data/team_logo/MI.jpg" />
+                <img data-u="image" src="data/team_logo/MI.jpg" class="dButton" onclick="func('MumbaiIndians')"/>
                 <img data-u="thumb" src="data/team_logo/MI.jpg" />
             </div>
             <div data-p="144.50" style="display: none;">
-                <img data-u="image" src="data/team_logo/RCB.jpg" />
+                <img data-u="image" src="data/team_logo/RCB.jpg" class="dButton" onclick="func('RoyalChallengersBangalore')"/>
                 <img data-u="thumb" src="data/team_logo/RCB.jpg" />
             </div>
 
             <div data-p="144.50" style="display: none;">
-                <img data-u="image" src="data/team_logo/RPS.jpg" />
+                <img data-u="image" src="data/team_logo/RPS.jpg" class="dButton" onclick="func('RisingPuneSupergiants')"/>
                 <img data-u="thumb" src="data/team_logo/RPS.jpg" />
             </div>
             <div data-p="144.50" style="display: none;">
-                <img data-u="image" src="data/team_logo/SRH.jpg" />
+                <img data-u="image" src="data/team_logo/SRH.jpg" class="dButton" onclick="func('SunrisersHyderabad')"/>
                 <img data-u="thumb" src="data/team_logo/SRH.jpg" />
             </div>
 
@@ -252,51 +257,101 @@
             });
         });
       </script>-->
-
+<!-- Modal div Start -->
     <div id="content_1" style="display: none" align="center">
         This is a jQuery Dialog.
     </div>
+    <div id="content_2" style="display: none" align="center">
+        This is a jQuery Dialog.
+    </div>
+    <!-- TModal div End -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js'></script>
     <script src='http://rawgit.com/jasonday/jQuery-UI-Dialog-extended/master/jquery.dialogOptions.js'>
     </script>
     <script>
-        $('#dButton').click(function() {
+        $('.dButton').click(function() {
             $('#content_1').dialog('open');
         });
         $('#content_1').dialog({
             width: 800,
+            height: 600,
             autoOpen: false,
             dialogClass: 'test',
             modal: true,
-            title: "Delhi",
+            title: "Players",
             responsive: true
         });
     </script>
     <script>
+    function func(teamName){
         $(function() {
+            $.getJSON('data/ipl.json', function(result) {
+                //console.log(data);
+                //var jsonObj = $.parseJSON(data);
+                var html = '<div>';
+                $.each(result[teamName], function(key1, value1) {
+                  var i=0;
+//onclick="'+funs+'('+teamName+','+i+')'+'";
+                    html += '<div style="display: inline-block;">';
+                    html += '<table class="modalDiv sButton" border="1">';
+                    html += '<tr><td><img src="' + value1.player_img_url + '"></td></tr>';
+                    html += '<tr><td align="center">' + value1.player_name + '</td></tr>';
+                    html += '</table>';
+                    html += '</div>';
+                    i++;
+                });
+                html += '</div>';
 
+                $('#content_1').html(html);
+                console.log(result[teamName][0].player_dob);
+            });
 
+        });}
+    </script>
+<!-- second model for player description -->
+    <script>
+        $('.sButton').click(function() {
+            $('#content_2').dialog('open');
+        });
+        $('#content_1').dialog({
+            width: 800,
+            height: 600,
+            autoOpen: false,
+            dialogClass: 'test',
+            modal: true,
+            title: "Player Detail",
+            responsive: true
+        });
+    </script>
+    <script>
+    function funs(teamName,indexId){
+      console.log("called");
+        $(function() {
             $.getJSON('data/ipl.json', function(result) {
                 //console.log(data);
                 //var jsonObj = $.parseJSON(data);
                 var html = '<div>';
 
+                    html += '<div style="display: inline-block;">';
+                    html += '<table class="modal2Div" border="1">';
+                    html += '<tr><td>'+result[teamName][indexId].player_name+'</td></tr>';
+                    html += '<tr><td>'+result[teamName][indexId].player_batting_style+'</td></tr>';
+                    html += '<tr><td>'+result[teamName][indexId].player_bowling_style+'</td></tr>';
+                    html += '<tr><td>'+result[teamName][indexId].player_dob+'</td></tr>';
 
-                $.each(result.DelhiDareDevils, function(key1, value1) {
-                    html += '<div  style="display: inline-block;">';
-                    html += '<table border="1">';
-                    html += '<tr><td><img src="' + value1.player_img_url + '"></td></tr>';
-                    html += '<tr><td align="center">' + value1.player_name + '</td></tr>';
+                    html += '<tr><td>'+result[teamName][indexId].player_nationality+'</td></tr>';
+                    html += '<tr><td><img src="' + result[teamName][indexId].player_img_url + '"></td></tr>';
+                    html += '<tr><td align="center">' + result[teamName][indexId].player_role + '</td></tr>';
                     html += '</table>';
                     html += '</div>';
-                });
+
                 html += '</div>';
 
-                $('#content_1').html(html);
+                $('#content_2').html(html);
             });
 
-        });
+        });}
     </script>
 </body>
 
