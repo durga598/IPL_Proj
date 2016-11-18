@@ -1,0 +1,20 @@
+{
+  "name": "IPL_Proj",
+  "authors": [
+    "durga598 <durga598@gmail.com>"
+  ],
+  "description": "IPL with jQuery",
+  "main": "index.html",
+  "keywords": [
+    "IPL"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

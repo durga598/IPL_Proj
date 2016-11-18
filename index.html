@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL App</title>
+    <style media="screen">
+        body {
+            background-image: url("data/img/bgimg.jpg");
+        }
+    </style>
+    <link rel='stylesheet prefetch' href='css/jquery-ui.css'>
+    <style class="cp-pen-styles">
+        * {
+            font-family: sans-serif;
+        }
+
+        #content_1 {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- This code works with jquery library. -->
+    <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="scripts/jssor.slider-21.1.6.mini.js" type="text/javascript"></script>
+    <script src="scripts/custom.js" type="text/javascript"></script>
+    <style>
+        /* jssor slider arrow navigator skin 05 css */
+        /*
+        .jssora05l                  (normal)
+        .jssora05r                  (normal)
+        .jssora05l:hover            (normal mouseover)
+        .jssora05r:hover            (normal mouseover)
+        .jssora05l.jssora05ldn      (mousedown)
+        .jssora05r.jssora05rdn      (mousedown)
+        .jssora05l.jssora05lds      (disabled)
+        .jssora05r.jssora05rds      (disabled)
+        */
+
+        #jssor_1 {
+            margin: 0 auto;
+            margin-top: 10%;
+        }
+
+        .jssora05l,
+        .jssora05r {
+            display: block;
+            position: absolute;
+            /* size of arrow element */
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: url('data/img/a17.png') no-repeat;
+            overflow: hidden;
+        }
+
+        .jssora05l {
+            background-position: -10px -40px;
+        }
+
+        .jssora05r {
+            background-position: -70px -40px;
+        }
+
+        .jssora05l:hover {
+            background-position: -130px -40px;
+        }
+
+        .jssora05r:hover {
+            background-position: -190px -40px;
+        }
+
+        .jssora05l.jssora05ldn {
+            background-position: -250px -40px;
+        }
+
+        .jssora05r.jssora05rdn {
+            background-position: -310px -40px;
+        }
+
+        .jssora05l.jssora05lds {
+            background-position: -10px -40px;
+            opacity: .3;
+            pointer-events: none;
+        }
+
+        .jssora05r.jssora05rds {
+            background-position: -70px -40px;
+            opacity: .3;
+            pointer-events: none;
+        }
+        /* jssor slider thumbnail navigator skin 01 css */
+        /*.jssort01 .p            (normal).jssort01 .p:hover      (normal mouseover).jssort01 .p.pav        (active).jssort01 .p.pdn        (mousedown)*/
+
+        .jssort01 .p {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 72px;
+            height: 72px;
+        }
+
+        .jssort01 .t {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .jssort01 .w {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .jssort01 .c {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 68px;
+            height: 68px;
+            border: #000 2px solid;
+            box-sizing: content-box;
+            background: url('data/img/t01.png') -800px -800px no-repeat;
+            _background: none;
+        }
+
+        .jssort01 .pav .c {
+            top: 2px;
+            _top: 0px;
+            left: 2px;
+            _left: 0px;
+            width: 68px;
+            height: 68px;
+            border: #000 0px solid;
+            _border: #fff 2px solid;
+            background-position: 50% 50%;
+        }
+
+        .jssort01 .p:hover .c {
+            top: 0px;
+            left: 0px;
+            width: 70px;
+            height: 70px;
+            border: #fff 1px solid;
+            background-position: 50% 50%;
+        }
+
+        .jssort01 .p.pdn .c {
+            background-position: 50% 50%;
+            width: 68px;
+            height: 68px;
+            border: #000 2px solid;
+        }
+
+        * html .jssort01 .c,
+        * html .jssort01 .pdn .c,
+        * html .jssort01 .pav .c {
+            /* ie quirks mode adjust */
+            width/**/
+            : 72px;
+            height/**/
+            : 72px;
+        }
+    </style>
+    <!-- <button id="dButton">Responsive Dialog</button> -->
+    <div id="jssor_1" style="position: relative; width: 800px; height: 456px; overflow: hidden; visibility: hidden; ">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('data/img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;">
+            <div data-p="144.50">
+                <img data-u="image" src="data/team_logo/DD.jpg" id="dButton" />
+                <img data-u="thumb" src="data/team_logo/DD.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/GL.jpg" />
+                <img data-u="thumb" src="data/team_logo/GL.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/KKR.jpg" />
+                <img data-u="thumb" src="data/team_logo/KKR.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/KXIP.jpg" />
+                <img data-u="thumb" src="data/team_logo/KXIP.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/MI.jpg" />
+                <img data-u="thumb" src="data/team_logo/MI.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/RCB.jpg" />
+                <img data-u="thumb" src="data/team_logo/RCB.jpg" />
+            </div>
+
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/RPS.jpg" />
+                <img data-u="thumb" src="data/team_logo/RPS.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/SRH.jpg" />
+                <img data-u="thumb" src="data/team_logo/SRH.jpg" />
+            </div>
+
+        </div>
+        <!-- Thumbnail Navigator -->
+        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:800px;height:100px;" data-autocenter="1">
+            <!-- Thumbnail Item Skin Begin -->
+            <div data-u="slides" style="cursor: default;">
+                <div data-u="prototype" class="p">
+                    <div class="w">
+                        <div data-u="thumbnailtemplate" class="t"></div>
+                    </div>
+                    <div class="c"></div>
+                </div>
+            </div>
+            <!-- Thumbnail Item Skin End -->
+        </div>
+        <!-- Arrow Navigator -->
+        <span data-u="arrowleft" class="jssora05l" style="top:158px;left:8px;width:40px;height:40px;"></span>
+        <span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;"></span>
+    </div>
+    <!-- #endregion Jssor Slider End -->
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+            $("#dialog").dialog({
+                modal: true,
+                autoOpen: false,
+                title: "Team Name",
+                width: 900,
+                height: 500
+            });
+            $("#btnShow").click(function () {
+                $('#dialog').dialog('open');
+            });
+        });
+      </script>-->
+
+    <div id="content_1" style="display: none" align="center">
+        This is a jQuery Dialog.
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js'></script>
+    <script src='http://rawgit.com/jasonday/jQuery-UI-Dialog-extended/master/jquery.dialogOptions.js'>
+    </script>
+    <script>
+        $('#dButton').click(function() {
+            $('#content_1').dialog('open');
+        });
+        $('#content_1').dialog({
+            width: 800,
+            autoOpen: false,
+            dialogClass: 'test',
+            modal: true,
+            title: "Delhi",
+            responsive: true
+        });
+    </script>
+    <script>
+        $(function() {
+
+
+            $.getJSON('data/ipl.json', function(result) {
+                //console.log(data);
+                //var jsonObj = $.parseJSON(data);
+                var html = '<div>';
+
+
+                $.each(result.DelhiDareDevils, function(key1, value1) {
+                    html += '<div  style="display: inline-block;">';
+                    html += '<table border="1">';
+                    html += '<tr><td><img src="' + value1.player_img_url + '"></td></tr>';
+                    html += '<tr><td align="center">' + value1.player_name + '</td></tr>';
+                    html += '</table>';
+                    html += '</div>';
+                });
+                html += '</div>';
+
+                $('#content_1').html(html);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
