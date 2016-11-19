@@ -11,7 +11,9 @@
             background-image: url("data/img/bgimg.jpg");
         }
     </style>
+
     <link rel='stylesheet prefetch' href='css/jquery-ui.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <style class="cp-pen-styles">
         * {
             font-family: sans-serif;
@@ -20,10 +22,22 @@
         #content_1 {
             display: none;
         }
+        #content_2 {
+            display: none;
+        }
         .modalDiv{
         width: 238px;
         height: 326px;
         }
+        .modal2Div{
+          width: 238px;
+          height: 326px;
+        }
+        td
+{
+  text-align:center;
+  vertical-align:middle;
+}
     </style>
 </head>
 
@@ -186,7 +200,7 @@
         </div>
         <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;">
           <div data-p="144.50" style="display: none;">
-              <img data-u="image" src="data/team_logo/GL.jpg" class="dButton" onclick="func('GujaratLions')"/>
+              <img data-u="image" src="data/team_logo/GL.jpg" class="dButton" onclick="func('GujaratLions')" data-toggle="dialog" href="#content_1"/>
               <img data-u="thumb" src="data/team_logo/GL.jpg" />
           </div>
             <div data-p="144.50">
@@ -259,27 +273,45 @@
       </script>-->
 <!-- Modal div Start -->
     <div id="content_1" style="display: none" align="center">
-        This is a jQuery Dialog.
+        <!-- This is a jQuery Dialog. -->
     </div>
     <div id="content_2" style="display: none" align="center">
-        This is a jQuery Dialog.
+        <!-- This is a jQuery Dialog. -->
     </div>
     <!-- TModal div End -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.js'></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js'></script>
+   <script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js'></script>
     <script src='http://rawgit.com/jasonday/jQuery-UI-Dialog-extended/master/jquery.dialogOptions.js'>
     </script>
     <script>
         $('.dButton').click(function() {
+          // console.log('called modal1');
             $('#content_1').dialog('open');
         });
         $('#content_1').dialog({
+modal: true,
             width: 800,
             height: 600,
             autoOpen: false,
             dialogClass: 'test',
-            modal: true,
+
             title: "Players",
+            responsive: true
+        });
+
+$(document).on('click', '.modalDiv', function(){
+        // $('.modalDiv').click(function() {
+          // console.log('called modal2');
+            $('#content_2').dialog('open');
+        });
+        $('#content_2').dialog({
+  modal: true,
+            width: 300,
+            height: 400,
+            autoOpen: false,
+            dialogClass: 'test',
+
+            title: "Player Detail",
             responsive: true
         });
     </script>
@@ -290,12 +322,12 @@
                 //console.log(data);
                 //var jsonObj = $.parseJSON(data);
                 var html = '<div>';
+                var i=0;
                 $.each(result[teamName], function(key1, value1) {
-                  var i=0;
-//onclick="'+funs+'('+teamName+','+i+')'+'";
+
                     html += '<div style="display: inline-block;">';
-                    html += '<table class="modalDiv sButton" border="1">';
-                    html += '<tr><td><img src="' + value1.player_img_url + '"></td></tr>';
+                    html += '<table class="modalDiv" border="1" data-toggle="dialog" href="#content_2" onclick=(funs(\''+teamName+'\',\''+i+'\'))>';
+                    html += '<tr><td><img  src="' + value1.player_img_url + '"></td></tr>';
                     html += '<tr><td align="center">' + value1.player_name + '</td></tr>';
                     html += '</table>';
                     html += '</div>';
@@ -304,29 +336,15 @@
                 html += '</div>';
 
                 $('#content_1').html(html);
-                console.log(result[teamName][0].player_dob);
+                // console.log(result[teamName][0].player_dob);
             });
 
         });}
     </script>
 <!-- second model for player description -->
     <script>
-        $('.sButton').click(function() {
-            $('#content_2').dialog('open');
-        });
-        $('#content_1').dialog({
-            width: 800,
-            height: 600,
-            autoOpen: false,
-            dialogClass: 'test',
-            modal: true,
-            title: "Player Detail",
-            responsive: true
-        });
-    </script>
-    <script>
     function funs(teamName,indexId){
-      console.log("called");
+      // console.log("called");
         $(function() {
             $.getJSON('data/ipl.json', function(result) {
                 //console.log(data);
@@ -341,8 +359,8 @@
                     html += '<tr><td>'+result[teamName][indexId].player_dob+'</td></tr>';
 
                     html += '<tr><td>'+result[teamName][indexId].player_nationality+'</td></tr>';
-                    html += '<tr><td><img src="' + result[teamName][indexId].player_img_url + '"></td></tr>';
-                    html += '<tr><td align="center">' + result[teamName][indexId].player_role + '</td></tr>';
+                    // html += '<tr><td><img src="' + result[teamName][indexId].player_img_url + '"></td></tr>';
+                    html += '<tr><td>' + result[teamName][indexId].player_role + '</td></tr>';
                     html += '</table>';
                     html += '</div>';
 
