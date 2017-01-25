@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL App</title>
+    <style media="screen">
+        body {
+            background-image: url("data/img/bgimg.jpg");
+        }
+    </style>
+
+    <link rel='stylesheet prefetch' href='css/jquery-ui.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        #content_1 {
+            display: none;
+        }
+
+        #content_2 {
+            display: none;
+        }
+
+        .modalDiv {
+            width: 238px;
+            height: 326px;
+        }
+
+        .modal2Div {
+            width: 238px;
+            height: 326px;
+        }
+
+        td {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- This code works with jquery library. -->
+    <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="scripts/jssor.slider-21.1.6.mini.js" type="text/javascript"></script>
+    <script src="scripts/custom.js" type="text/javascript"></script>
+    <link rel='stylesheet prefetch' href='css/jsor.css'>
+    <!-- <button id="dButton">Responsive Dialog</button> -->
+    <div id="jssor_1" style="position: relative; width: 800px; height: 456px; overflow: hidden; visibility: hidden; ">
+        <!-- Loading Screen -->
+        <div id="teamData" data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('data/img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <!-- <div id="teamData">
+
+        </div> -->
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;">
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/GL.jpg" class="dButton" onclick="func('GujaratLions')" data-toggle="dialog" href="#content_1" />
+                <img data-u="thumb" src="data/team_logo/GL.jpg" />
+            </div>
+            <div data-p="144.50">
+                <img data-u="image" src="data/team_logo/DD.jpg" class="dButton" onclick="func('DelhiDareDevils')" />
+                <img data-u="thumb" src="data/team_logo/DD.jpg" />
+            </div>
+
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/KKR.jpg" class="dButton" onclick="func('KingsXIPunjab')" />
+                <img data-u="thumb" src="data/team_logo/KKR.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/KXIP.jpg" class="dButton" onclick="func('KolkataKnightRiders')" />
+                <img data-u="thumb" src="data/team_logo/KXIP.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/MI.jpg" class="dButton" onclick="func('MumbaiIndians')" />
+                <img data-u="thumb" src="data/team_logo/MI.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/RCB.jpg" class="dButton" onclick="func('RoyalChallengersBangalore')" />
+                <img data-u="thumb" src="data/team_logo/RCB.jpg" />
+            </div>
+
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/RPS.jpg" class="dButton" onclick="func('RisingPuneSupergiants')" />
+                <img data-u="thumb" src="data/team_logo/RPS.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <img data-u="image" src="data/team_logo/SRH.jpg" class="dButton" onclick="func('SunrisersHyderabad')" />
+                <img data-u="thumb" src="data/team_logo/SRH.jpg" />
+            </div>
+
+        </div>
+        <!-- Thumbnail Navigator -->
+        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:800px;height:100px;" data-autocenter="1">
+            <!-- Thumbnail Item Skin Begin -->
+            <div data-u="slides" style="cursor: default;">
+                <div data-u="prototype" class="p">
+                    <div class="w">
+                        <div data-u="thumbnailtemplate" class="t"></div>
+                    </div>
+                    <div class="c"></div>
+                </div>
+            </div>
+            <!-- Thumbnail Item Skin End -->
+        </div>
+        <!-- Arrow Navigator -->
+        <span data-u="arrowleft" class="jssora05l" style="top:158px;left:8px;width:40px;height:40px;"></span>
+        <span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;"></span>
+    </div>
+    <!-- #endregion Jssor Slider End -->
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+            $("#dialog").dialog({
+                modal: true,
+                autoOpen: false,
+                title: "Team Name",
+                width: 900,
+                height: 500
+            });
+            $("#btnShow").click(function () {
+                $('#dialog').dialog('open');
+            });
+        });
+      </script>-->
+    <!-- Modal div Start -->
+    <div id="content_1" style="display: none" align="center">
+        <!-- This is a jQuery Dialog. -->
+    </div>
+    <div id="content_2" style="display: none" align="center">
+        <!-- This is a jQuery Dialog. -->
+    </div>
+    <!-- TModal div End -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js'></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script src='http://rawgit.com/jasonday/jQuery-UI-Dialog-extended/master/jquery.dialogOptions.js'>
+    </script>
+    <script>
+        $('.dButton').click(function() {
+            console.log('called modal1');
+            $('#content_1').dialog('open');
+        });
+        $('#content_1').dialog({
+            modal: true,
+            width: 800,
+            height: 600,
+            autoOpen: false,
+            dialogClass: 'test',
+
+            title: "Players",
+            responsive: true
+        });
+
+        $(document).on('click', '.modalDiv', function() {
+            // $('.modalDiv').click(function() {
+            console.log('called modal2');
+            $('#content_2').dialog('open');
+        });
+        $('#content_2').dialog({
+            modal: true,
+            width: 300,
+            height: 500,
+            autoOpen: false,
+            dialogClass: 'test',
+
+            title: "Player Detail",
+            responsive: true
+        });
+    </script>
+    
+    <script>
+        function func(teamName) {
+            $(function() {
+                $.getJSON('data/ipl.json', function(result) {
+                    //console.log(data);
+                    //var jsonObj = $.parseJSON(data);
+                    var html = '<div>';
+                    var i = 0;
+                    $.each(result[teamName], function(key1, value1) {
+
+                        html += '<div style="display: inline-block;">';
+                        html += '<table class="modalDiv" border="1" data-toggle="dialog" href="#content_2" onclick=(funs(\'' + teamName + '\',\'' + i + '\'))>';
+                        html += '<tr><td><img  src="' + value1.player_img_url + '"></td></tr>';
+                        html += '<tr><td align="center">' + value1.player_name + '</td></tr>';
+                        html += '</table>';
+                        html += '</div>';
+                        i++;
+                    });
+                    html += '</div>';
+
+                    $('#content_1').html(html);
+                    // console.log(result[teamName][0].player_dob);
+                });
+
+            });
+        }
+    </script>
+    <!-- second model for player description -->
+    <script>
+        $(document).ready(function() {
+            console.log('loaded');
+
+        });
+    </script>
+    <script>
+        function funs(teamName, indexId) {
+            console.log("called");
+            $(function() {
+                $.getJSON('data/ipl.json', function(result) {
+                    //console.log(data);
+                    //var jsonObj = $.parseJSON(data);
+                    var html = '<div>';
+
+                    html += '<div style="display: inline-block;">';
+                    html += '<table class="modal2Div" border="1">';
+                    html += '<tr><td>' + result[teamName][indexId].player_name + '</td></tr>';
+                    html += '<tr><td>' + result[teamName][indexId].player_batting_style + '</td></tr>';
+                    html += '<tr><td>' + result[teamName][indexId].player_bowling_style + '</td></tr>';
+                    html += '<tr><td>' + result[teamName][indexId].player_dob + '</td></tr>';
+
+                    html += '<tr><td>' + result[teamName][indexId].player_nationality + '</td></tr>';
+                    // html += '<tr><td><img src="' + result[teamName][indexId].player_img_url + '"></td></tr>';
+                    html += '<tr><td align="center">' + result[teamName][indexId].player_role + '</td></tr>';
+                    html += '</table>';
+                    html += '</div>';
+
+                    html += '</div>';
+
+                    $('#content_2').html(html);
+                    console.log("created");
+                });
+
+            });
+        }
+    </script>
+
+</body>
+
+</html>
